@@ -1,9 +1,6 @@
 
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class OddOccurrencesInArray {
 	public static void main(String[] args) {
@@ -14,7 +11,7 @@ public class OddOccurrencesInArray {
 	
 	private static int solution(int[] A) {
 		int result = 0;
-		HashSet workset = new HashSet();
+		HashSet<Integer> workset = new HashSet<>();
 		for (int i : A) {
 			if(workset.add(i)) {
 			} else { 
