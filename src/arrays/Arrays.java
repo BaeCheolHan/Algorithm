@@ -6,7 +6,6 @@ public class Arrays {
 		int[] A = {};
 		int K = 1;
 		A = solution(A, K);
-		System.out.println("asdf");
 	}
 
 	private static int[] solution(int[] A, int K) {
