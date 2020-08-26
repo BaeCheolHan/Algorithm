@@ -68,7 +68,7 @@ public class Combination {
         	count++;
         	System.out.println(resultLst);
         }
+        
     }
-
-
+	
 }
