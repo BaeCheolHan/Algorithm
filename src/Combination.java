@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class Combination {
 	private static int count = 0;
+	
 	public static void main(String[] args) {
 		String input = "apdkf35k47n1t2";
 		solution(input);
@@ -13,9 +14,7 @@ public class Combination {
 	}
 	
 	private static void solution(String input) {
-		
 		String[] inputArr = input.split("");
-		
 		// 문자열에서 정수 추출 
 		List<Integer> lst = Arrays.asList(inputArr)
 									.stream()
@@ -30,43 +29,39 @@ public class Combination {
         }
 		
 	}
-	
-	
+
 	/**
-		arr	조합을 뽑아낼 배열
-		output	조합에 뽑혔는지 체크하는 배열
-		n	배열의 길이
-		r	조합의 길이
+	 * @param lst : 조합을 뽑아낼 List
+	 * @param visited
+	 * @param start : 기준
+	 * @param n : 배열의 길이
+	 * @param r : 조합의 길이
 	 */
-	private static void combination(List<Integer> lst, boolean[] visited, int depth, int n, int r) {
-	    if (r == 0) {
+	private static void combination(List<Integer> lst, boolean[] visited, int start, int n, int r) {
+	    if(r == 0) {
 	        print(lst, visited, n);
 	        return;
+	    } 
+
+	    for(int i = start; i < n; i++) {
+	        visited[i] = true;
+	        combination(lst, visited, i + 1, n, r - 1);
+	        visited[i] = false;
 	    }
-
-	    if (depth == n) {
-	        return;
-	    }
-
-	    visited[depth] = true;
-	    combination(lst, visited, depth + 1, n, r - 1);
-
-	    visited[depth] = false;
-	    combination(lst, visited, depth + 1, n, r);
 	}
 	
 	private static void print(List<Integer> lst, boolean[] visited, int n) {
 		
-		List<Integer> resultLst = new ArrayList<>();
+		List<Integer> result = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             if (visited[i]) {
-            	resultLst.add(lst.get(i));
+            	result.add(lst.get(i));
             }
         }
 
-        if(resultLst.stream().mapToInt(a -> a).sum() == 10) {
+        if(result.stream().mapToInt(e -> e).sum() == 10) {
         	count++;
-        	System.out.println(resultLst);
+        	System.out.println(result);
         }
         
     }
