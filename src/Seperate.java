@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Seperate {
 
@@ -18,20 +19,21 @@ public class Seperate {
 	    if(arr.length > 0) {
 	    	StringBuilder result = new StringBuilder();
 	    	
-	    	for(String str :arr) {
-	    		if(str.equals(" ")) {
-	    			result.append(str);
+	    	Arrays.asList(arr).stream().forEach(e -> {
+	    		if(e.equals(" ")) {
+	    			result.append(e);
 	    		}
 	    		
-	    		char chName = str.charAt(0);
+	    		char chName = e.charAt(0);
 	    		
 		        if(chName >= 0xAC00) {
 		            int unicodeVal = chName - 0xAC00;
 		            int chosungVal = unicodeVal / (21 * 28);
 		            result.append(chs[chosungVal]);
 		        }
+	    	});
+	    	
 		        
-	    	}
 	    	return result.toString();
 	    	
 	    }
