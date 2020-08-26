@@ -56,13 +56,14 @@ public class Combination {
 	}
 	
 	private static void print(List<Integer> lst, boolean[] visited, int n) {
+		
 		List<Integer> resultLst = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             if (visited[i]) {
             	resultLst.add(lst.get(i));
             }
         }
-        
+
         if(resultLst.stream().mapToInt(a -> a).sum() == 10) {
         	count++;
         	System.out.println(resultLst);
