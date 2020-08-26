@@ -10,8 +10,7 @@ public class Combination {
 		
 	}
 	
-	private static int solution(String input) {
-		int result = 0;
+	private static void solution(String input) {
 		
 		String[] inputArr = input.split("");
 		
@@ -27,7 +26,6 @@ public class Combination {
 			combination(lst, visited, 0, lst.size(), i);
         }
 		
-		return result;
 	}
 	
 	
