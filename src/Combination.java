@@ -16,6 +16,7 @@ public class Combination {
 		
 		String[] inputArr = input.split("");
 		
+		// 문자열에서 정수 추출 
 		List<Integer> lst = Arrays.asList(inputArr)
 									.stream()
 									.filter(e -> e.matches("[0-9]"))
