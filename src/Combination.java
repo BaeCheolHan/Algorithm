@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Combination {
 	private static int count = 0;
@@ -14,11 +16,11 @@ public class Combination {
 		
 		String[] inputArr = input.split("");
 		
-		List<Integer> lst = new ArrayList<>();
-		for(String str : inputArr) {
-			if(str.matches("[0-9]"))
-				lst.add(Integer.parseInt(str));
-		}
+		List<Integer> lst = Arrays.asList(inputArr)
+									.stream()
+									.filter(e -> e.matches("[0-9]"))
+									.map(Integer::parseInt)
+									.collect(Collectors.toList());
 		
 		boolean[] visited = new boolean[lst.size()];
 		
