@@ -54,22 +54,22 @@ class NumberSort {
       return target;
     }
 
-    int pivot = target.get(0); //choosing the first element as the pivot
+    int pivot = target.get(0); //pivot 선택 
 
-    //smallerSorted = quicksort [a | a <- xs, a <= x]
+    //pivot 보다 작은 값 sort
     List<Integer> smallerSorted = quickSort(
       target.stream()
-        .skip(1) //removing pivot
-        .filter(i -> i >= pivot) //filter the elements >= x
+        .skip(1) //pivot 제거 (이후 두 Stream을 합칠때 가운데 들어감)
+        .filter(i -> i >= pivot) //filter the elements >= pivot
         .collect(Collectors.toList())
-    ); //convert the stream back to List
+    ); 
 
-    //biggerSorted = quicksort [a | a <- xs, a > x]
+    // pivot보다 큰 값 sort
     List<Integer> biggerSorted = quickSort(
       target.stream()
-        .skip(1) //removing pivot
-        .filter(i -> i < pivot) //filter the elements < x
-        .collect(Collectors.toList())); //convert the stream back to List
+        .skip(1) // pivot 제거 (이후 두 Stream을 합칠때 가운데 들어감)
+        .filter(i -> i < pivot) //filter the elements < pivot
+        .collect(Collectors.toList())); 
 
     //smallerSorted ++ [x] ++ biggerSorted 
     return Stream.concat(Stream.concat(smallerSorted.stream(), Stream.of(pivot)), biggerSorted.stream())
