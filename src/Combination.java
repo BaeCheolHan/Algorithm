@@ -14,46 +14,46 @@ public class Combination {
 		System.out.println(String.format("output %d\n", count));
 	
 		String result = resultList
-				.stream()
-				.map(e -> e.stream().map(it -> String.valueOf(it)).collect(Collectors.joining(",","","")))
-				.collect(Collectors.joining(" / ", "(", ")"));
+								.stream()
+								.map(e -> e.stream().map(it -> String.valueOf(it)).collect(Collectors.joining(",", "", "")))
+								.collect(Collectors.joining(" / ", "(", ")"));
 		System.out.println(result);
 	}
 	
 	private static void solution(String input) {
 		String[] inputArr = input.split("");
 		List<Integer> lst = Arrays.asList(inputArr)
-									.stream()
-									.filter(e -> e.matches("[0-9]"))
-									.map(Integer::parseInt)
-									.collect(Collectors.toList());
+												.stream()
+												.filter(e -> e.matches("[0-9]"))
+												.map(Integer::parseInt)
+												.collect(Collectors.toList());
 		Collections.sort(lst);
 		boolean[] visited = new boolean[lst.size()];
 		
-		for (int i = 1; i <= lst.size(); i++) {
-			combination(lst, visited, 0, lst.size(), i);
+		for (int length = 2; length <= lst.size(); length++) {
+			combination(lst, visited, 0, lst.size(), length);
         }
 		
 	}
 
 	
-	private static void combination(List<Integer> lst, boolean[] visited, int start, int n, int r) {
-	    if(r == 0) {
-	    	collect(lst, visited, n);
+	private static void combination(List<Integer> lst, boolean[] visited, int start, int elemLength, int length) {
+	    if(length == 0) {
+	    	collect(lst, visited, elemLength);
 	        return;
 	    } 
 
-	    for(int i = start; i < n; i++) {
+	    for(int i = start; i < elemLength; i++) {
 	        visited[i] = true;
-	        combination(lst, visited, i + 1, n, r - 1);
+	        combination(lst, visited, i + 1, elemLength, length - 1);
 	        visited[i] = false;
 	    }
 	}
 	
-	private static void collect(List<Integer> lst, boolean[] visited, int n) {
+	private static void collect(List<Integer> lst, boolean[] visited, int elemLength) {
 		
 		List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < elemLength; i++) {
             if (visited[i]) {
             	result.add(lst.get(i));
             }
