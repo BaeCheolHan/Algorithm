@@ -1,4 +1,4 @@
-package timeComplexcity;
+package codility.lesson3.timeComplexity;
 import java.util.Arrays;
 
 public class PermMissingElem {

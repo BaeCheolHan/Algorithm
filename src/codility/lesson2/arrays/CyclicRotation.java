@@ -1,7 +1,6 @@
-package arrays;
+package codility.lesson2.arrays;
 
-
-public class Arrays {
+public class CyclicRotation {
 	public static void main(String[] args) {
 		int[] A = {};
 		int K = 1;
