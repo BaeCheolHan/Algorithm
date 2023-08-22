@@ -14,12 +14,11 @@ public class OddOccurrencesInArray {
 		int result = 0;
 		HashSet<Integer> workset = new HashSet<>();
 		for (int i : A) {
-			if(workset.add(i)) {
-			} else { 
+			if(!workset.add(i)) {
 				workset.remove(i);
 			}
 		}
-		result = (int) workset.iterator().next();
+		result = workset.iterator().next();
 		return result;
 	}
 }
